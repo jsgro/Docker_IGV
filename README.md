@@ -44,7 +44,7 @@ xhost + 127.0.0.1
 To add shared volume add `-v` as shown below for a (blank) directory here called `dockershare` mapped onto the `/root` home directory on the container
 
 ```
-docker run -it --rm -v /Users/$USER/dockershare:/root -e DISPLAY=docker.for.mac.localhost:0 jysgro/igv:igv:2.4.11 /bin/sh
+docker run -it --rm -v /Users/$USER/dockershare:/root -e DISPLAY=docker.for.mac.localhost:0 jysgro/igv:2.4.11 /bin/bash
 ```
 
 This command will create the container with a shell. To start IGV simply issue the command: `igv &` and when done type `exit` to exit the container. 
