@@ -22,7 +22,7 @@ Displaying the graphics from IGV requires `X11`, read below for Mac.
 Windows users *might* be able to replace `XQuartz` with `MobaXterm` (not tested) or another `X` software.
 
 IGV will run in the Unix graphical environment `X11`. Below is a method I found online to accomplish this.
-See **How to show X11 windows with Docker on Mac** by *Marc Reichelt* [https://bit.ly/2usa0bB](https://bit.ly/2usa0bB)
+See **How to show X11 windows with Docker on Mac** by *Marc Reichelt* [https://bit.ly/2usa0bB](https://bit.ly/2usa0bB) [Archived 2019-12-04](https://web.archive.org/web/20191204130945/https://medium.com/@mreichelt/how-to-show-x11-windows-within-docker-on-mac-50759f4b65cb)
 
 ## Set-up:
 
@@ -45,6 +45,12 @@ To add shared volume add `-v` as shown below for a (blank) directory here called
 
 ```
 docker run -it --rm -v /Users/$USER/dockershare:/root -e DISPLAY=docker.for.mac.localhost:0 jysgro/igv:2.4.11 /bin/bash
+```
+
+Note: the `DISPLAY` option `host.docker.internal:0` from *Marc Reichelt*'s article (links above) also works:
+
+```
+docker run -it --rm -v ${PWD}:/root -e DISPLAY=host.docker.internal:0 jysgro/igv:2.4.11 /bin/bash
 ```
 
 This command will create the container with a shell. To start IGV simply issue the command: `igv &` and when done type `exit` to exit the container. 
