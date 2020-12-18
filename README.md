@@ -7,7 +7,7 @@ for full description.
 
 # PURPOSE
 
-Run `IGV` in a container. This came about when a Mac had Java 10 but IGV requires Java 8.
+Run `IGV` in a container. This came about when a Mac had Java 10 (!) but IGV requires Java 8 and could not be "downgraded."
 
 IGV: Integrative Genomics Viewer - Broad Institute
 [https://software.broadinstitute.org/software/igv/](https://software.broadinstitute.org/software/igv/)
@@ -15,6 +15,8 @@ IGV: Integrative Genomics Viewer - Broad Institute
 IGV version installed: `2.4.11`
 
 Ubutu base used: `ubuntu:18.04`
+
+## Windows: see below
 
 # HOW TO RUN
 
@@ -67,3 +69,26 @@ docker.for.mac.localhost:0
 # 
 ```
 
+# WINDOWS
+
+Tested on [MobaXterm Home Edition](https://mobaxterm.mobatek.net/download-home-edition.html) on Windows10.
+
+Requires to turn Xserver on by clicking on top right X11 logo.
+
+Requires to use the IP number provided by MobaXterm at start-up, for example:
+
+```
+➤ Your computer drives are accessible through the /drives path     │
+     │ ➤ Your DISPLAY is set to 172.16.45.139:0.0                         │
+     │ ➤ When using SSH, your remote DISPLAY is automatically forwarded   │
+     │ ➤ Your HOME folder is not persistent: it will be erased on restart │
+     │ ➤ Each command status is specified by a special symbol (✔ or ✘)   
+```
+
+Hence the command would be:
+
+```
+docker run -it --rm -v ${PWD}:/root -e DISPLAY=172.16.45.139:0.0  jysgro/igv:2.4.11 /bin/bash
+```
+
+However the set-up is very slow and unstable.
